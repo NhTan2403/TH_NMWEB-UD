@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <style>
+        * { box-sizing: border-box; }
+        body { font-family: Arial, sans-serif; font-size: 13px; padding: 10px; background-color: #f4f4f4; }
+        
+        .form-container {
+            width: 100%; max-width: 650px; margin: auto;
+            background-color: #eeeeee; padding: 20px; border: 1px solid #ccc;
+        }
+
+        .title { text-align: center; font-weight: bold; font-size: 16px; margin-bottom: 15px; text-transform: uppercase; }
+        .section-header { font-weight: bold; border-bottom: 1px solid #999; margin: 15px 0 10px 0; padding-bottom: 5px; }
+
+        table { width: 100%; border-collapse: collapse; }
+        td { padding: 6px 5px; vertical-align: middle; }
+        .label-cell { width: 140px; }
+
+        input, input[type="password"], input[type="date"], input[type="email"], input[type="tel"], select {
+            width: 100%; max-width: 300px; padding: 3px; border: 1px solid #999;
+        }
+
+        /* FIX: Cho dấu tick và chữ sát nhau */
+        label {
+            display: inline-flex; align-items: center;
+            margin-right: 15px; cursor: pointer; font-weight: normal;
+        }
+        input[type="radio"], input[type="checkbox"] {
+            margin: 0 4px 0 0; /* Cách chữ bên phải đúng 4px */
+            width: auto; cursor: pointer;
+        }
+
+        /* Layout Nhóm sản phẩm 2 cột */
+        .interest-section {
+            display: flex; margin-top: 15px; background: #fff; padding: 10px; border-radius: 4px;
+        }
+        .interest-q { width: 40%; line-height: 1.4; padding-right: 10px; }
+        .interest-opts { width: 60%; display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+
+        .btn-group { text-align: center; margin-top: 20px; }
+        input[type="submit"], input[type="reset"] { padding: 5px 20px; cursor: pointer; }
+    </style>
+</head>
+<body>
+
+<div class="form-container">
+    <!-- Yêu cầu: Đổi thành method="get" nếu hiện tại là post (hoặc ngược lại) -->
+    <!-- Lưu ý: File upload thường dùng POST, nhưng mình sửa thành GET theo yêu cầu đề bài -->
+    <form name="frmdangkithanhvien" action="xlThem.php" method="get" enctype="multipart/form-data">
+        <div class="title">Đăng ký thành viên</div>
+        
+        <table>
+            <tr>
+                <td class="label-cell">Tên đăng nhập</td>
+                <td><input type="text" name="nmUsername" /></td>
+            </tr>
+            <tr>
+                <td>Mật khẩu</td>
+                <td><input type="password" name="nmPassword" /></td>
+            </tr>
+        </table>
+
+        <div class="section-header">THÔNG TIN CÁ NHÂN</div>
+
+        <table>
+            <tr>
+                <td class="label-cell">Họ tên</td>
+                <td><input type="text" name="nmFullName" /></td>
+            </tr>
+            <tr>
+                <td>Ngày sinh</td>
+                <td><input type="date" name="nmBirthDate" /></td>
+            </tr>
+            <tr>
+                <td>Giới tính</td>
+                <td>
+                    <label><input type="radio" name="rdGioiTinh" value="Nam" checked /> Nam</label>
+                    <label><input type="radio" name="rdGioiTinh" value="Nữ" /> Nữ</label>
+                </td>
+            </tr>
+            <tr>
+                <td>Địa chỉ email</td>
+                <td><input type="email" name="nmEmailAdd" style="max-width: 350px;" /></td>
+            </tr>
+            <tr>
+                <td>Hình đại diện</td>
+                <!-- Yêu cầu 1: name="nmURLAvatar" -->
+                <td><input type="file" name="nmURLAvatar" /></td>
+            </tr>
+            <tr>
+                <td>Địa chỉ</td>
+                <td><input type="text" name="nmAddress" style="max-width: 350px;" /></td>
+            </tr>
+            <tr>
+                <td>Điện thoại</td>
+                <td><input type="tel" name="nmCellphone" /></td>
+            </tr>
+            <tr>
+                <td>Câu hỏi bí mật</td>
+                <td>
+                    <select name="nmPriateQuestion">
+                        <option value="">Chọn câu hỏi bí mật</option>
+                        <option value="1">Ngôi Trường đầu tiên của bạn là gì</option>
+                        <option value="2">Con vật đầu tiên mà bạn nuôi tên gì?</option>
+                        <option value="3">Kỷ niệm thời thơ ấu của bạn? </option>
+                        <option value="4">Quê bạn ở đâu ?</option>
+                        <option value="5">Tên người bạn thân nhất của bạn là gì?</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>Trả lời</td>
+                <td><input type="text" name="nmPrivateAnswer" style="max-width: 350px;" /></td>
+            </tr>
+        </table>
+
+        <!-- Yêu cầu 2: name="nmFields[]" cho checkbox -->
+        <div class="interest-section">
+            <div class="interest-q">Bạn đang quan tâm đến nhóm sản phẩm nào?</div>
+            <div class="interest-opts">
+                <label><input type="checkbox" name="nmFields[]" value="VH" /> Văn học</label>
+                <label><input type="checkbox" name="chkFields[]" value="TN" /> Thiếu nhi</label>
+                <label><input type="checkbox" name="chkFields[]" value="KT" /> Kinh tế</label>
+                <label><input type="checkbox" name="chkFields[]" value="GK" /> Giáo khoa</label>
+                <label><input type="checkbox" name="chkFields[]" value="TL" /> Tâm lý</label>
+                <label><input type="checkbox" name="chkFields[]" value="NN" /> Ngoại ngữ</label>
+            </div>
+        </div>
+
+        <div class="btn-group">
+            <input type="submit" name="nmSubmit" value="Đăng ký" />
+            <input type="reset" name="nmReset" value="Xóa" />
+        </div>
+    </form>
+</div>
+
+</body>
+</html>

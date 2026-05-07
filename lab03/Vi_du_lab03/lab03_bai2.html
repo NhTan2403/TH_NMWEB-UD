@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <style>
+        * { box-sizing: border-box; }
+        body { font-family: Arial, sans-serif; font-size: 13px; margin: 0; padding: 10px; }
+
+        .form-container {
+            width: 100%;
+            max-width: 650px;
+            margin: auto;
+            background-color: #eeeeee;
+            padding: 20px;
+            border: 1px solid #ccc;
+        }
+
+        .title { text-align: center; font-weight: bold; font-size: 16px; margin-bottom: 15px; }
+        .section-header { font-weight: bold; border-bottom: 1px solid #999; margin: 15px 0 10px 0; padding-bottom: 5px; }
+
+        table { width: 100%; border-collapse: collapse; }
+        td { padding: 6px 5px; vertical-align: middle; }
+        
+        .label-cell { width: 130px; }
+
+        /* Các ô nhập liệu chính */
+        input, input[type="password"], input[type="date"], input[type="email"], input[type="tel"], select {
+            width: 280px; 
+            padding: 3px;
+            border: 1px solid #999;
+        }
+
+        /* KHẮC PHỤC KHOẢNG CÁCH NAM/NỮ VÀ CHECKBOX */
+        label {
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            margin-right: 20px; /* Khoảng cách giữa các cụm (ví dụ: giữa cụm Nam và cụm Nữ) */
+        }
+
+        input[type="radio"], input[type="checkbox"] {
+            margin: 0 5px 0 0; /* Chỉ cách chữ bên phải 5px, các phía khác bằng 0 */
+            cursor: pointer;
+            width: auto; /* Đảm bảo không bị dãn width */
+        }
+
+        /* Layout phần Nhóm sản phẩm */
+        .interest-section {
+            display: flex;
+            background: #fff; /* Để giống hình mẫu thường có nền trắng nhẹ bên trong */
+            padding: 15px;
+            border-radius: 4px;
+            margin-top: 10px;
+            align-items: flex-start;
+        }
+        .interest-question { width: 45%; padding-right: 10px; line-height: 1.5; }
+        .interest-options { width: 55%; display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+
+        .btn-group { text-align: center; margin-top: 20px; }
+        input[type="submit"], input[type="reset"] { width: 100px; padding: 5px; cursor: pointer; }
+    </style>
+</head>
+<body>
+
+<div class="form-container">
+    <form name="frmdangkithanhvien" action="xlThem.php" method="post" enctype="multipart/form-data">
+        <div class="title">ĐĂNG KÝ THÀNH VIÊN</div>
+        
+        <table>
+            <tr>
+                <td class="label-cell">Tên đăng nhập</td>
+                <td><input type="text" name="nmUsername" /></td>
+            </tr>
+            <tr>
+                <td>Mật khẩu</td>
+                <td><input type="password" name="nmPassword" /></td>
+            </tr>
+        </table>
+
+        <div class="section-header">THÔNG TIN CÁ NHÂN</div>
+
+        <table>
+            <tr>
+                <td class="label-cell">Họ tên</td>
+                <td><input type="text" name="nmFullName" /></td>
+            </tr>
+            <tr>
+                <td>Ngày sinh</td>
+                <td><input type="date" name="nmBirthDate" /></td>
+            </tr>
+            <tr>
+                <td>Giới tính</td>
+                <td>
+                    <!-- Dùng label để chữ và nút dính sát nhau -->
+                    <label><input type="radio" name="rdGioiTinh" value="Nam" checked /> Nam</label>
+                    <label><input type="radio" name="rdGioiTinh" value="Nữ" /> Nữ</label>
+                </td>
+            </tr>
+            <tr>
+                <td>Địa chỉ email</td>
+                <td><input type="email" name="nmEmailAdd" style="width: 350px;" /></td>
+            </tr>
+            <tr>
+                <td>Hình đại diện</td>
+                <td><input type="file" name="fHinh" /></td>
+            </tr>
+            <tr>
+                <td>Địa chỉ</td>
+                <td><input type="text" name="nmAddress" style="width: 350px;" /></td>
+            </tr>
+            <tr>
+                <td>Điện thoại</td>
+                <td><input type="tel" name="nmCellphone" /></td>
+            </tr>
+            <tr>
+                <td>Câu hỏi bí mật</td>
+                <td>
+                    <select name="nmPriateQuestion">
+                        <option value="">Chọn câu hỏi bí mật</option>
+                        <option value="1">Ngôi Trường đầu tiên của bạn là gì</option>
+                        <option value="2">Con vật đầu tiên mà bạn nuôi tên gì?</option>
+                        <option value="3">Kỷ niệm thời thơ ấu của bạn? </option>
+                        <option value="4">Quê bạn ở đâu ?</option>
+                        <option value="5">Tên người bạn thân nhất của bạn là gì?</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>Trả lời</td>
+                <td><input type="text" name="nmPrivateAnswer" style="width: 350px;" /></td>
+            </tr>
+        </table>
+
+        <!-- PHẦN NHÓM SẢN PHẨM: Đã sửa khoảng cách tick sát chữ -->
+        <div class="interest-section">
+            <div class="interest-question">Bạn đang quan tâm đến nhóm sản phẩm nào?</div>
+            <div class="interest-options">
+                <label><input type="checkbox" name="chk[]" /> Văn học</label>
+                <label><input type="checkbox" name="chk[]" /> Thiếu nhi</label>
+                <label><input type="checkbox" name="chk[]" /> Kinh tế</label>
+                <label><input type="checkbox" name="chk[]" /> Giáo khoa</label>
+                <label><input type="checkbox" name="chk[]" /> Tâm lý</label>
+                <label><input type="checkbox" name="chk[]" /> Ngoại ngữ</label>
+            </div>
+        </div>
+
+        <div class="btn-group">
+            <input type="submit" value="Đăng ký" />
+            <input type="reset" value="Xóa" />
+        </div>
+    </form>
+</div>
+
+</body>
+</html>
