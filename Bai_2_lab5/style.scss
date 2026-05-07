@@ -1,0 +1,52 @@
+
+$color-ngang: #00bcd4;
+$color-ngang-hover: #ffc107;
+$color-doc: #3f51b5;
+$color-text: #ffffff;
+@mixin menu-item($bg, $color: #000) {
+    list-style: none;
+    padding: 10px 20px;
+    background-color: $bg;
+    color: $color;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.menu_ngang {
+    display: flex;
+    padding: 0;
+    justify-content: center;
+
+    li {
+        @include menu-item($color-ngang);
+        margin-right: 5px;
+
+        &:hover {
+            background-color: $color-ngang-hover;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+    }
+}
+
+.menu_doc {
+    display: flex;
+    flex-direction: column;
+    width: 200px;
+    padding: 0;
+    margin-top: 20px;
+
+    li {
+        @include menu-item($color-doc, $color-text);
+        margin-bottom: 2px;
+
+        &:hover {
+            filter: brightness(130%);
+            font-style: italic;
+        }
+    }
+}
+li a {
+    text-decoration: none;
+    color: inherit;
+}

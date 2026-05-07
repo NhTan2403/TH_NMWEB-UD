@@ -1,0 +1,45 @@
+.menu_ngang {
+  display: flex;
+  padding: 0;
+  justify-content: center;
+}
+.menu_ngang li {
+  list-style: none;
+  padding: 10px 20px;
+  background-color: #00bcd4;
+  color: #000;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  margin-right: 5px;
+}
+.menu_ngang li:hover {
+  background-color: #ffc107;
+  border-radius: 5px;
+  font-weight: bold;
+}
+
+.menu_doc {
+  display: flex;
+  flex-direction: column;
+  width: 200px;
+  padding: 0;
+  margin-top: 20px;
+}
+.menu_doc li {
+  list-style: none;
+  padding: 10px 20px;
+  background-color: #3f51b5;
+  color: #ffffff;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  margin-bottom: 2px;
+}
+.menu_doc li:hover {
+  filter: brightness(130%);
+  font-style: italic;
+}
+
+li a {
+  text-decoration: none;
+  color: inherit;
+}/*# sourceMappingURL=style.css.map */

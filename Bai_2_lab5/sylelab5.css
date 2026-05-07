@@ -1,0 +1,36 @@
+
+.menu_ngang {
+    display: flex;
+    padding: 0;
+}
+.menu_ngang li {
+    list-style-type: none;
+    padding: 10px 20px;  
+    background-color: aqua;
+}
+.menu_ngang li:hover {
+    background-color: yellow;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.menu_doc {
+    display: flex;
+    flex-direction: column;
+    width: 200px;
+    padding: 0;
+    margin-top: 20px;
+}
+.menu_doc li {
+    list-style: none;
+    padding: 10px;
+    background-color: rgb(24, 20, 211);
+    color: aliceblue;
+    margin-bottom: 1px;
+}
+.menu_doc li:hover {
+    filter: brightness(130%);
+    font-style: italic;
+    cursor: pointer;
+}
