@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Sản Phẩm - LaptopShop</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="logo">Laptopshop</div>
+        <div class="menu">
+            <a href="index.html">Trang Chủ</a>
+            <a href="products.html" class="active">Sản Phẩm</a>
+            <a href="labs.html">Lab thực hành</a>
+        </div>
+        <div class="auth">
+            <a href="login.html">Đăng nhập</a>
+            <a href="cart.html" style="margin-left: 20px;">Giỏ hàng (<span id="cart-count">0</span>)</a>
+        </div>
+    </nav>
+
+    <main class="products-layout">
+        <aside class="sidebar">
+            <div class="filter-group">
+                <h4>Hãng sản xuất</h4>
+                <label><input type="checkbox" value="Apple"> Apple</label>
+                <label><input type="checkbox" value="Asus"> Asus</label>
+                <label><input type="checkbox" value="Lenovo"> Lenovo</label>
+                <label><input type="checkbox" value="Dell"> Dell</label>
+            </div>
+
+            <div class="filter-group">
+                <h4>Mức giá</h4>
+                <label><input type="radio" name="price" value="under10"> Dưới 10 triệu</label>
+                <label><input type="radio" name="price" value="10to20"> Từ 10 - 20 triệu</label>
+                <label><input type="radio" name="price" value="above20"> Trên 20 triệu</label>
+            </div>
+
+            <button onclick="filterProducts()"
+                style="width: 100%; padding: 10px; border-radius: 20px; background: none; border: 1px solid #ffb703; color: #ffb703; font-weight: bold; cursor: pointer;">
+                LỌC SẢN PHẨM
+            </button>
+
+            <button onclick="clearFilters()"
+                style="width: 100%; padding: 10px; border-radius: 20px; background: none; border: 1px solid #666; color: #666; font-weight: bold; cursor: pointer; margin-top: 10px;">
+                HỦY LỌC
+            </button>
+        </aside>
+
+        <section class="main-products">
+            <p style="margin-bottom: 20px; color: #888;">Trang chủ / Danh sách sản phẩm</p>
+            <div class="grid-layout" id="product-grid"></div>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

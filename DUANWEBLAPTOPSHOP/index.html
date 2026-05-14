@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <title>LaptopShop - Trang Chủ</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="logo">Laptopshop</div>
+        <div class="menu">
+            <a href="index.html" class="active">Trang Chủ</a>
+            <a href="products.html">Sản Phẩm</a>
+            <a href="labs.html">Lab thực hành</a>
+        </div>
+        <div class="auth">
+            <a href="login.html">Đăng nhập</a>
+            <a href="cart.html">Giỏ hàng (<span id="cart-count">0</span>)</a>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-content">
+            <p style="color: #f0a500; font-weight: bold;">100% Sản Phẩm Chính Hãng</p>
+            <h2>Hàng cao cấp <br> <span class="highlight">Rẻ vô địch</span></h2>
+        </div>
+        <div class="hero-image">
+            <img src="images/Banner.jpg" alt="Banner">
+        </div>
+    </section>
+
+    <section class="section-container">
+        <h2 class="section-title">Sản phẩm nổi bật</h2>
+        <div class="grid-layout" id="product-grid"></div>
+    </section>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

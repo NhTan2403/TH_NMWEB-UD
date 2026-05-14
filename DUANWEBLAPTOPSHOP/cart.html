@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Giỏ Hàng - LaptopShop</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="logo">Laptopshop</div>
+        <div class="menu">
+            <a href="index.html">Trang Chủ</a>
+            <a href="products.html">Sản Phẩm</a>
+        </div>
+        <div class="auth">
+            <a href="cart.html">Giỏ hàng (<span id="cart-count">0</span>)</a>
+        </div>
+    </nav>
+
+    <section class="section-container">
+        <h2 class="section-title">Giỏ hàng của bạn</h2>
+        <div id="cart-items-list">
+        </div>
+        <div id="cart-summary"
+            style="margin-top: 20px; text-align: right; border-top: 2px solid #eee; padding-top: 20px;">
+            <h3>Tổng cộng: <span id="total-price" style="color: #82c91e;">0 đ</span></h3>
+            <button class="btn-pay-now" onclick="alert('Chuyển đến trang thanh toán...')">Thanh Toán Ngay</button>
+        </div>
+    </section>
+
+    <script src="script.js"></script>
+    <script>
+        // Logic riêng cho trang giỏ hàng để hiển thị danh sách
+        function renderCart() {
+            const container = document.getElementById('cart-items-list');
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+            let total = 0;
+
+            if (cart.length === 0) {
+                container.innerHTML = "<p>Giỏ hàng đang trống!</p>";
+                document.getElementById('total-price').innerText = "0 đ";
+                return;
+            }
+
+            container.innerHTML = cart.map((item, index) => {
+                total += item.price;
+                return `
+                    <div style="display: flex; align-items: center; justify-content: space-between; background: #fff; padding: 15px; margin-bottom: 10px; border-radius: 8px; border: 1px solid #eee;">
+                        <img src="${item.img}" width="80">
+                        <div style="flex: 1; margin-left: 20px;">
+                            <h4>${item.name}</h4>
+                            <p style="color: #82c91e; font-weight: bold;">${new Intl.NumberFormat('vi-VN').format(item.price)} đ</p>
+                        </div>
+                        <button onclick="removeFromCart(${index})" style="background: #ff4d4f; color: white; border: none; padding: 5px 10px; border-radius: 4px; cursor: pointer;">Xóa</button>
+                    </div>
+                `;
+            }).join('');
+
+            document.getElementById('total-price').innerText = new Intl.NumberFormat('vi-VN').format(total) + " đ";
+        }
+
+        function removeFromCart(index) {
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+            cart.splice(index, 1);
+            localStorage.setItem('cart', JSON.stringify(cart));
+            renderCart();
+            updateCartCount(); // Cập nhật số trên Navbar
+        }
+
+        // Chạy lần đầu khi mở trang
+        renderCart();
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Chi Tiết Sản Phẩm - LaptopShop</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="logo">Laptopshop</div>
+        <div class="menu">
+            <a href="index.html">Trang Chủ</a>
+            <a href="products.html" class="active">Sản Phẩm</a>
+            <a href="labs.html">Lab thực hành</a>
+        </div>
+        <div class="auth">
+            <a href="cart.html">Giỏ hàng (<span id="cart-count">0</span>)</a>
+        </div>
+    </nav>
+
+    <div class="breadcrumb">
+        <a href="index.html">Home</a> / Chi tiết sản phẩm
+    </div>
+
+    <main class="detail-layout" id="detail-container">
+    </main>
+
+    <div class="modal-overlay" id="qrModal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeQR()">&times;</span>
+            <h3>QUÉT MÃ ĐỂ THANH TOÁN</h3>
+            <div class="qr-code">
+                <img src="images/MAQR.jpg" alt="Mã QR" style="width:100%">
+            </div>
+            <p>Chủ TK: <strong>TRẦN NHẬT TÂN</strong></p>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
